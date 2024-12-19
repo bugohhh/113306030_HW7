@@ -1,3 +1,27 @@
+// Requirement #1: Edit Name
+const displayName = document.getElementById('display-name');
+const editButton = document.getElementById('edit-button');
+
+editButton.addEventListener('click', () => {
+    if (editButton.textContent === 'edit') {
+        // Change name to input field
+        const inputField = document.createElement('input');
+        inputField.type = 'text';
+        inputField.id = 'name-input';
+        inputField.value = displayName.textContent;
+        displayName.replaceWith(inputField);
+        editButton.textContent = 'save';
+    } else {
+        // Save input as name
+        const inputField = document.getElementById('name-input');
+        const newName = inputField.value.trim();
+        if (newName) {
+            displayName.textContent = newName;
+        }
+        inputField.replaceWith(displayName);
+        editButton.textContent = 'edit';
+    }
+});
 // Selectors
 const addMusicButton = document.getElementById('add-music-button');
 const musicList = document.getElementById('music-list');
